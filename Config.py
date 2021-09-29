@@ -41,3 +41,8 @@ GAME_OVER_PATH = "assets/game-over.png"
 
 # Font
 FONT_PATH = "assets/04B_19.ttf"
+
+# Sounds
+SOUND_HIT_PATH = "assets/sound/sfx_hit.wav"
+SOUND_POINT_PATH = "assets/sound/sfx_point.wav"
+SOUND_WING_PATH = "assets/sound/sfx_wing.wav"

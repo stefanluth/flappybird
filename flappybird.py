@@ -2,6 +2,7 @@ import pygame
 from pygame.surface import Surface
 from pygame.tests.time_test import Clock
 from pygame.font import Font
+from time import sleep
 
 import Config
 import sys
@@ -19,17 +20,16 @@ def DrawPipes(pipes: list[PipePair], screen: Surface):
 def MovePipes(pipes: list[PipePair], bird: Bird):
     for pipe in pipes:
         pipe.Move()
-        if not pipe.passed_by_bird and pipe.bottom_pipe.right < bird.bird_position.left:
+        if not pipe.passed_by_bird and pipe.bottom_pipe.centerx < bird.bird_position.left:
             pipe.passed_by_bird = True
             bird.score += 1
-            print(bird.score)
+            bird.PlaySound(Config.SOUND_POINT_PATH)
 
 
-def BirdPipeCollided(bird: Bird, pipes: list[PipePair]):
+def BirdCollided(bird: Bird, pipes: list[PipePair]):
     for pipe in pipes:
         if pipe.bottom_pipe.colliderect(bird.bird_position) or \
-                pipe.top_pipe.colliderect(bird.bird_position) or \
-                bird.FloorTouched():
+                pipe.top_pipe.colliderect(bird.bird_position):
             return True
     return False
 
@@ -95,17 +95,14 @@ def main():
             world.Move()
             MovePipes(pipe_list, bird)
 
-            if bird.FloorTouched():
-                game_active = False
-                game_over = True
-
         DrawPipes(pipe_list, screen)
         bird.Draw(screen)
 
         if bird.score > high_score:
             high_score = bird.score
 
-        if BirdPipeCollided(bird, pipe_list):
+        if game_active and not game_over and (BirdCollided(bird, pipe_list) or bird.FloorTouched()):
+            bird.PlaySound(Config.SOUND_HIT_PATH)
             game_active = False
             game_over = True
 

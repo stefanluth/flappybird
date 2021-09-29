@@ -23,6 +23,7 @@ class Bird:
 
     def Flap(self):
         self.movement = Config.BIRD_FLAP_STRENGTH
+        self.PlaySound(Config.SOUND_WING_PATH)
 
     def Move(self):
         self.movement -= Config.GRAVITY
@@ -40,7 +41,12 @@ class Bird:
         else:
             self.bird_surface = self.GetBirdSurface(bird_image=Config.BIRD_YELLOW_UP_PATH)
 
-
-
     def FloorTouched(self):
-        return self.bird_position.bottom > Config.SCREEN_HEIGHT - 85*2
+        if self.bird_position.bottom > Config.SCREEN_HEIGHT - 85*2:
+            # self.PlaySound(Config.SOUND_HIT_PATH)
+            return True
+        return False
+
+    @staticmethod
+    def PlaySound(sound):
+        pygame.mixer.Sound(sound).play()
