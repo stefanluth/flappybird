@@ -13,7 +13,7 @@ PIPE_SPEED = 3
 PIPE_GAP = 250
 PIPE_SPAWN_X_POSITION = 700
 PIPE_SPAWNING_SPEED = 1800
-PIPE_HEIGHT_VARIATION = 250
+PIPE_HEIGHT_VARIATION = 300
 
 # Bird & Game
 BIRD_X_POSITION = 100
@@ -31,3 +31,9 @@ BIRD_YELLOW_PATH = "assets/bird/yellow/midflap.png"
 
 # Pipe
 PIPE_GREEN_PATH = "assets/pipe/pipe-green.png"
+
+# Game Over
+GAME_OVER_PATH = "assets/game-over.png"
+
+# Font
+FONT_PATH = "assets/04B_19.ttf"

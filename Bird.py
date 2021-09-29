@@ -9,6 +9,7 @@ class Bird:
         self.bird_surface: Surface = self.GetBirdSurface()
         self.bird_position = self.bird_surface.get_rect(center=(Config.BIRD_X_POSITION, Config.SCREEN_HEIGHT / 2))
         self.movement = 0
+        self.score = 0
 
     @staticmethod
     def GetBirdSurface():

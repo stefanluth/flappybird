@@ -12,6 +12,7 @@ class PipePair:
         self.center_middle: float = (Config.SCREEN_HEIGHT - 85*2)/2 + self.GetVariation()
         self.bottom_pipe = self.surface.get_rect(midtop=(Config.PIPE_SPAWN_X_POSITION, self.center_middle + self.pipe_gap/2))
         self.top_pipe = self.surface.get_rect(midbottom=(Config.PIPE_SPAWN_X_POSITION, self.center_middle + self.pipe_gap/2))
+        self.passed_by_bird = False
 
     @staticmethod
     def GetPipeSurface():
@@ -21,7 +22,7 @@ class PipePair:
 
     @staticmethod
     def GetVariation():
-        return randint(-Config.PIPE_HEIGHT_VARIATION, Config.PIPE_HEIGHT_VARIATION)
+        return randint(-Config.PIPE_HEIGHT_VARIATION/2, Config.PIPE_HEIGHT_VARIATION)
 
     def Draw(self, screen: Surface):
         screen.blit(self.surface, self.bottom_pipe)
