@@ -12,8 +12,8 @@ class Bird:
         self.score = 0
 
     @staticmethod
-    def GetBirdSurface():
-        bird_surface: Surface = pygame.image.load(Config.BIRD_YELLOW_PATH)
+    def GetBirdSurface(bird_image=Config.BIRD_YELLOW_MID_PATH):
+        bird_surface: Surface = pygame.image.load(bird_image)
         bird_surface = pygame.transform.scale2x(bird_surface)
 
         return bird_surface
@@ -32,6 +32,15 @@ class Bird:
             self.movement = 0
             self.bird_position = self.bird_surface.get_rect(
                 center=(Config.BIRD_X_POSITION, 0 + self.bird_position.height / 2))
+
+        if self.movement > 2:
+            self.bird_surface = self.GetBirdSurface(bird_image=Config.BIRD_YELLOW_DOWN_PATH)
+        elif 2 > self.movement > -2:
+            self.bird_surface = self.GetBirdSurface(bird_image=Config.BIRD_YELLOW_MID_PATH)
+        else:
+            self.bird_surface = self.GetBirdSurface(bird_image=Config.BIRD_YELLOW_UP_PATH)
+
+
 
     def FloorTouched(self):
         return self.bird_position.bottom > Config.SCREEN_HEIGHT - 85*2

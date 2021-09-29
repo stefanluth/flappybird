@@ -17,8 +17,9 @@ PIPE_HEIGHT_VARIATION = 300
 
 # Bird & Game
 BIRD_X_POSITION = 100
-GRAVITY = 0.5
 BIRD_FLAP_STRENGTH = 12
+BIRD_FLAP_INTERVAL = 150
+GRAVITY = 0.5
 
 # File paths
 # Background
@@ -28,6 +29,9 @@ BACKGROUND_NIGHT_PATH = "assets/background-night.png"
 
 # Bird
 BIRD_YELLOW_PATH = "assets/bird/yellow/midflap.png"
+BIRD_YELLOW_MID_PATH = "assets/bird/yellow/midflap.png"
+BIRD_YELLOW_UP_PATH = "assets/bird/yellow/upflap.png"
+BIRD_YELLOW_DOWN_PATH = "assets/bird/yellow/downflap.png"
 
 # Pipe
 PIPE_GREEN_PATH = "assets/pipe/pipe-green.png"
